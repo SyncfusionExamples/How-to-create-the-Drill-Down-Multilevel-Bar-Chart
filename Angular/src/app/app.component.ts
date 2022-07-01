@@ -3,15 +3,17 @@ import {
     ChartComponent,
     IPointEventArgs,
   } from '@syncfusion/ej2-angular-charts';
+import { Breadcrumb , BreadcrumbClickEventArgs, } from '@syncfusion/ej2-navigations';
   
 /**
  * Sample for  Stacked water fall chart
  */
+ Breadcrumb 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['app.component.css'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
 
@@ -69,10 +71,6 @@ export class AppComponent {
       } else {
         args.series.dataSource = this.week;
       }
-      let button: HTMLElement = <HTMLElement>document.getElementById('button'); 
-      button.style.display = 'block';        
-      (<HTMLElement>document.getElementById('category')).style.visibility = 'visible';
-    
     };
     // custom code end
     public chartArea: Object = {
@@ -80,16 +78,16 @@ export class AppComponent {
         width: 0,
       }
     };
-    public width: string = '40%';
-    ngAfterViewInit() {
-        (<HTMLElement>document.getElementById('category')).onclick = () => {
-            this.chart.series[0].dataSource = this.data;
-            let button: HTMLElement = <HTMLElement>document.getElementById('button');
-            button.style.display = 'none';
-            (<HTMLElement>document.getElementById('category')).style.visibility = 'hidden';
-        };
+    public clickHandler(args: BreadcrumbClickEventArgs): void {
+      if (args.item.text == 'Level 1') {
+        this.chart.series[0].dataSource = this.data;
+      } else if (args.item.text == 'Level 2') {
+        this.chart.series[0].dataSource = this.month;
+      } else if (args.item.text == 'Level 3') {
+        this.chart.series[0].dataSource = this.week;
+      }
     }
-  
+    public width: string = '40%';
     constructor() {
       //code
     }

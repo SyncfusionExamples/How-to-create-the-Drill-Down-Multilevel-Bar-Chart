@@ -1,27 +1,21 @@
-<div class="control-section">
-    <div id="button" style="font-size:14px;margin-left: 10px;margin-top: 20px;display:none;left:50px;top:50px;">
-        <a id="category" style="visibility:hidden; display:inline-block"> Back </a>
-        <p style="visibility:hidden; display:inline-block" id="symbol">&nbsp;&gt;&gt;&nbsp;</p>
-        <p id="text" style="display:inline-block;"></p>
-    </div>
-
-    <div align='center'>
-        <ejs-chart #chart id='chart' style='display:block;' [chartArea]='chartArea' [width]='width' align='center' [primaryXAxis]='primaryXAxis'
+<div align='center'>
+    <ejs-chart #chart id='chart' style='display:block;' [chartArea]='chartArea' [width]='width' align='center' [primaryXAxis]='primaryXAxis'
             [primaryYAxis]='primaryYAxis' [title]='title' [tooltip]='tooltip' (pointClick)='pointClick($event)' >
-            <e-series-collection>
-                <e-series [dataSource]='data' type='Column' xName='x' yName='y' width=2></e-series>
-            </e-series-collection>
-        </ejs-chart>
-    </div>
+      <e-series-collection>
+    <e-series [dataSource]='data' type='Column' xName='x' yName='y' width=2></e-series>
+      </e-series-collection>
+    </ejs-chart>
 </div>
-<style>
-    .control-section {
-        min-height: 450px;
-    }
-    .backLabel:hover {
-        cursor: pointer;
-    }
-    #category:hover {
-        cursor: pointer;
-    }
-</style>
+<div class="row material2" >
+   <ejs-breadcrumb [maxItems]="3" [enableNavigation]="false" (itemClick)="clickHandler($event)" >
+      <e-breadcrumb-items>
+        <e-breadcrumb-item  text="Level 1" ></e-breadcrumb-item>
+        <e-breadcrumb-item  text="Level 2" ></e-breadcrumb-item>
+        <e-breadcrumb-item  text="Level 3" ></e-breadcrumb-item>
+      </e-breadcrumb-items>
+        <ng-template #separatorTemplate>
+          <span class="e-bicons e-arrow"></span>
+          </ng-template>
+  </ejs-breadcrumb>
+</div>
+   
